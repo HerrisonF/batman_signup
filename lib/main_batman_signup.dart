@@ -22,15 +22,16 @@ class BatmanSignUp extends StatefulWidget {
 }
 
 class _BatmanSignUpState extends State<BatmanSignUp>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   AnimationController _animationController;
   Animation<double> _animationLogoIn;
   Animation<double> _animationLogoMovementUp;
   Animation<double> _animationBatmanIn;
   Animation<double> _animationButtonsIn;
 
-  @override
-  void initState() {
+  AnimationController _animationControllerSignUp;
+
+  void _setupFirstAnimations() {
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 4),
@@ -62,12 +63,26 @@ class _BatmanSignUpState extends State<BatmanSignUp>
       curve: Interval(0.7, 1.0),
     );
     _animationController.forward();
+  }
+
+  void _setupSecondAnimations() {
+    _animationControllerSignUp = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 4),
+    );
+  }
+
+  @override
+  void initState() {
+    _setupFirstAnimations();
+    _setupSecondAnimations();
     super.initState();
   }
 
   @override
   void dispose() {
     _animationController.dispose();
+    _animationControllerSignUp.dispose();
     super.dispose();
   }
 
