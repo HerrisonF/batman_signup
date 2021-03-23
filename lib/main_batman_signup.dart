@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_batman/batman_button.dart';
+import 'package:flutter_batman/batman_screen_buttons.dart';
+import 'package:flutter_batman/batman_screen_title.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainBatmanSignUp extends StatelessWidget {
@@ -107,30 +109,9 @@ class _BatmanSignUpState extends State<BatmanSignUp>
                   right: 0,
                   child: Column(
                     children: [
-                      Opacity(
-                        opacity: _animationLogoMovementUp.value,
-                        child: Column(
-                          children: [
-                            Text(
-                              'WELCOME TO',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                              ),
-                            ),
-                            Text(
-                              'GOTHAM CITY',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 35,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 35,
-                      ),
+                      BatmanScreenTitle(_animationLogoMovementUp),
+                      const SizedBox(height: 35),
+                      BatmanScreenButtons(_animationButtonsIn),
                     ],
                   ),
                 ),
